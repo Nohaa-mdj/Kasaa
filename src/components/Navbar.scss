@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  padding: 0 2rem;
+  /*color: #ff6060;*/
+  color: black;
+  font-weight: 400;
+}
+
+.navbar__logo {
+  margin-right: auto;
+  margin-left: 6%;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar a.active {
+  text-decoration: underline;
+}
