@@ -8,8 +8,9 @@ function Apartment({ apartment }) {
       className="apartment"
       style={{ backgroundImage: `url(${apartment.cover})` }}
     >
-      <Link to={`/apartment/${apartment.id}`} className="apartment" />
-      <div className="apartment__subtitle">{apartment.title}</div>
+      <Link to={`/apartment/${apartment.id}`} className="apartment">
+        <div className="apartment__subtitle">{apartment.title}</div>
+      </Link>
     </div>
   );
 }

@@ -1,71 +1,4 @@
-/*import React from "react";
-import "./ApartmentPage.scss";
-import Dropdown from "../Dropdown";
-import Star from "../Stars";
-
-function ApartmentPage() {
-  const rating = 4;
-  return (
-    <div className="apartment-page">
-      <div className="img1">
-        <img src="/app1.png" alt="appartement1" />
-      </div>
-      <div className="apartments">
-        <div className="apartment-header">
-          <div className="apartment-infos">
-            <h1 className="appartment-page__title">
-              Cozy loft on the Canal Saint Martin
-            </h1>
-            <h2 className="appartment-page__subtitle">Paris, Ile-de-France</h2>
-            <div className="apartment-tags">
-              <p className="tag">Cozy</p>
-              <p className="tag">Canal</p>
-              <p className="tag">Paris 10</p>
-            </div>
-          </div>
-        </div>
-        <div className="apartment__owner">
-          <div className="owner-infos">
-            <h3>Alexandre Dumas</h3>
-            <div className="badge"></div>
-          </div>
-          <div className="apartment-stars">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} active={i < rating} />
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="apartment__dropdowns">
-        <Dropdown title="Description">
-          <p>
-            Vous serez à 50m du canal Saint Martin où vous pourrez pique-niquer
-            l'été et à côté de nombreux bars et restaurants. Au coeur de Paris
-            avec 5 lignes de métros et de nombreux bus. Logement parfait pour,
-            les voyageurs en solo et les voyageurs d'affaires. Vous êtes à 1
-            stattion de la Gare de l'Est (7 minutes à pieds).
-          </p>
-        </Dropdown>
-
-        <Dropdown title="Équipements">
-          <ul>
-            <li>Climatisation</li>
-            <li>Wi-Fi</li>
-            <li>Cuisine</li>
-            <li>Espace de travail</li>
-            <li>Fer à repasser</li>
-            <li>Sèche-cheveux</li>
-            <li>Cintres</li>
-          </ul>
-        </Dropdown>
-      </div>
-    </div>
-  );
-}
-
-export default ApartmentPage;*/
-
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import apartments from "../../../data.json";
 import Dropdown from "../Dropdown";
@@ -76,15 +9,45 @@ import Star from "../Stars";
 function ApartmentPage() {
   const { id } = useParams();
   const apartment = apartments.find((apt) => apt.id === id);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  if (!apartment) return <p>Appartement introuvable</p>;
+  const handleNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === apartment.pictures.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? apartment.pictures.length - 1 : prevIndex - 1
+    );
+  };
+
+  if (!apartment)
+    return (
+      <div className="ap-notfound">
+        <p className="notfound-ap">Appartement introuvable</p>
+        <a className="not-found-link" href="/">
+          Retourner sur la page d’accueil
+        </a>
+      </div>
+    );
 
   const rating = parseInt(apartment.rating);
 
   return (
     <div className="apartment-page">
-      <div className="img1">
-        <img src={apartment.cover} alt={apartment.title} />
+      <div className="gallery">
+        <button className="arrow-left" onClick={handlePrev}>
+          &#10094;
+        </button>
+        <img
+          src={apartment.pictures[currentImageIndex]}
+          alt={`Image ${currentImageIndex + 1}`}
+        />
+        <button className="arrow-right" onClick={handleNext}>
+          &#10095;
+        </button>
       </div>
 
       <div className="apartments">
