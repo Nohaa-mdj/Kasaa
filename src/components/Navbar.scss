@@ -5,6 +5,7 @@
   padding: 0 2rem;
   color: black;
   font-weight: 400;
+  width: 100%;
 }
 
 .navbar__logo {
@@ -19,4 +20,18 @@
 
 .navbar a.active {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 }
