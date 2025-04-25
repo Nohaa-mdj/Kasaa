@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import apartments from "../../../data.json";
 import Dropdown from "../Dropdown";
-
 import "./ApartmentPage.scss";
 import Star from "../Stars";
 
@@ -10,15 +9,9 @@ function ApartmentPage() {
   const { id } = useParams();
   const apartment = apartments.find((apt) => apt.id === id);
 
-  if (!apartment)
-    return (
-      <div className="ap-notfound">
-        <p className="notfound-ap">Appartement introuvable</p>
-        <a className="not-found-link" href="/">
-          Retourner sur la page d’accueil
-        </a>
-      </div>
-    );
+  if (!apartment) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

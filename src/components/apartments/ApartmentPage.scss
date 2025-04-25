@@ -141,28 +141,6 @@
   padding-top: 2rem;
 }
 
-.ap-notfound {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
-  text-align: center;
-  color: #ff6060;
-  font-family: "Montserrat", sans-serif;
-}
-
-.ap-notfound p {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.ap-notfound a {
-  font-size: 1.5rem;
-  text-decoration: underline;
-  color: black;
-}
-
 //Responsive
 
 @media screen and (max-width: 768px) {
