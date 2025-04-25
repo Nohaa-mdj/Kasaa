@@ -144,6 +144,11 @@
 //Responsive
 
 @media screen and (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   .img1 img {
     width: 100%;
     height: auto;
@@ -153,8 +158,8 @@
 
   .apartment-page {
     justify-content: center;
-    margin: 0 auto;
     overflow-x: hidden;
+    margin: 0;
   }
 
   .banner {
@@ -178,7 +183,6 @@
     align-items: flex-start;
     flex-wrap: wrap;
     width: 100%;
-    padding: 0 1rem;
     box-sizing: border-box;
     margin-top: 5%;
   }
@@ -212,6 +216,15 @@
     object-fit: cover;
   }
 
+  .apartment-tags {
+    display: flex;
+    flex-wrap: wrap; // ✅ Permet aux tags de passer à la ligne
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .apartment-stars {
     position: absolute;
     left: 1rem;
@@ -238,6 +251,10 @@
   .arrow-left {
     font-size: 2.5rem;
     left: 0rem !important;
+  }
+
+  .apartment-page {
+    margin: 0;
   }
 }
 

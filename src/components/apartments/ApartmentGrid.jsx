@@ -7,7 +7,7 @@ function ApartmentGrid() {
   return (
     <div className="grid">
       {apartments.map((apartment) => (
-        <Apartment apartment={apartment} />
+        <Apartment key={apartment.id} apartment={apartment} />
       ))}
     </div>
   );
