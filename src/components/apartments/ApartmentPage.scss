@@ -154,6 +154,7 @@
   .apartment-page {
     justify-content: center;
     margin: 0 auto;
+    overflow-x: hidden;
   }
 
   .banner {
@@ -170,16 +171,54 @@
     width: 100%;
   }
 
-  .apartment__owner {
-    flex-direction: row-reverse;
+  .apartment-header {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    margin-top: 5%;
+  }
+
+  .apartment__owner {
+    position: relative;
+    width: 100%;
     margin-top: 1rem;
+    box-sizing: border-box;
   }
 
   .owner-infos {
-    flex-direction: column;
-    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 80%;
+  }
+
+  .owner-infos h3 {
+    font-size: 0.9rem;
+    text-align: right;
+    color: #ff6060;
+    margin: 0;
+  }
+
+  .badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .apartment-stars {
+    position: absolute;
+    left: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 6%;
   }
 
   .apartment__dropdowns {
@@ -268,7 +307,6 @@
   color: white;
   font-size: 1.2rem;
   font-weight: 500;
-  //background-color: rgba(0, 0, 0, 0.3); // pour un fond discret et lisible
   padding: 0.3rem 0.8rem;
   border-radius: 10px;
   z-index: 10;
