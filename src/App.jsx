@@ -26,6 +26,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/apartment/:id" element={<ApartmentPage />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
 
