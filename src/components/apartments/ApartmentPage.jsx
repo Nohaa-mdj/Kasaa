@@ -9,6 +9,17 @@ import Star from "../Stars";
 function ApartmentPage() {
   const { id } = useParams();
   const apartment = apartments.find((apt) => apt.id === id);
+
+  if (!apartment)
+    return (
+      <div className="ap-notfound">
+        <p className="notfound-ap">Appartement introuvable</p>
+        <a className="not-found-link" href="/">
+          Retourner sur la page d’accueil
+        </a>
+      </div>
+    );
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleNext = () => {
@@ -22,16 +33,6 @@ function ApartmentPage() {
       prevIndex === 0 ? apartment.pictures.length - 1 : prevIndex - 1
     );
   };
-
-  if (!apartment)
-    return (
-      <div className="ap-notfound">
-        <p className="notfound-ap">Appartement introuvable</p>
-        <a className="not-found-link" href="/">
-          Retourner sur la page d’accueil
-        </a>
-      </div>
-    );
 
   const rating = parseInt(apartment.rating);
 
@@ -48,6 +49,10 @@ function ApartmentPage() {
         <button className="arrow-right" onClick={handleNext}>
           &#10095;
         </button>
+
+        <div key={currentImageIndex} className="image-counter">
+          {currentImageIndex + 1}/{apartment.pictures.length}
+        </div>
       </div>
 
       <div className="apartments">
