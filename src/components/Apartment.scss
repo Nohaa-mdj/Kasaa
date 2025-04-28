@@ -25,8 +25,9 @@
 
 @media screen and (width <= 768px) {
   .apartment {
-    flex-basis: 100%;
-    overflow-x: hidden;
+    flex: 1 1 300px;
+    min-width: 300px;
+    max-width: 400px;
   }
 }
 

@@ -48,6 +48,10 @@
   align-items: center;
   margin-top: 2rem;
   margin-left: auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .apartment__owner h3 {
@@ -95,7 +99,7 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: nowrap;
-  width: 1240px;
+  width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding-top: 2rem;
@@ -136,17 +140,33 @@
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  width: 96%;
+  width: 100%;
+  padding: 2rem 1rem 0 1rem;
   margin: 0 auto;
-  padding-top: 2rem;
 }
 
 //Responsive
 
 @media screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+
   html,
   body {
-    overflow-x: hidden;
+    // overflow-x: hidden;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gallery img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1rem;
   }
 
   .img1 img {
@@ -158,8 +178,12 @@
 
   .apartment-page {
     justify-content: center;
-    overflow-x: hidden;
+    //overflow-x: hidden;
     margin: 0;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding: 0;
   }
 
   .banner {
@@ -171,9 +195,17 @@
     align-items: flex-start;
   }
 
+  .apartment {
+    flex: 1 1 300px;
+    min-width: 300px;
+    max-width: 400px;
+  }
+
   .apartment-header,
   .apartment__owner {
     width: 100%;
+    max-width: 100%;
+    justify-self: center;
   }
 
   .apartment-header {
@@ -239,6 +271,7 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+    max-width: 100%;
     margin-top: 2rem;
     flex: 1;
   }
