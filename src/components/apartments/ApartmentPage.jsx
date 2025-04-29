@@ -6,16 +6,16 @@ import Star from "../Stars";
 
 function ApartmentPage({ apartments }) {
   const { id } = useParams();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  if (!apartments || apartments.length === 0) {
+    return <div>Chargement...</div>;
+  }
 
   const apartment = apartments.find((apt) => apt.id === id);
 
   if (!apartment) {
     return <Navigate to="/not-found" replace />;
-  }
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  if (!apartments || apartments.length === 0) {
-    return <div>Chargement...</div>;
   }
 
   const handleNext = () => {
