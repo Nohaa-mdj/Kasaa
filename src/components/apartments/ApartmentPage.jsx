@@ -15,7 +15,7 @@ function ApartmentPage({ apartments }) {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   if (!apartments || apartments.length === 0) {
-    return <div>Chargement...</div>; // pendant que le fetch se fait
+    return <div>Chargement...</div>;
   }
 
   const handleNext = () => {

@@ -38,7 +38,6 @@ function App() {
           path="/apartment/:id"
           element={<ApartmentPage apartments={apartments} />}
         />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
 
