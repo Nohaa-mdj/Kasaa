@@ -1,9 +1,8 @@
 import React from "react";
 import "./ApartmentGrid.scss";
 import Apartment from "../Apartment";
-import apartments from "../../../data.json";
 
-function ApartmentGrid() {
+function ApartmentGrid({ apartments }) {
   return (
     <div className="grid">
       {apartments.map((apartment) => (

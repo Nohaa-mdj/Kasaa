@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import apartments from "../../../data.json";
 import Dropdown from "../Dropdown";
 import "./ApartmentPage.scss";
 import Star from "../Stars";
 
-function ApartmentPage() {
+function ApartmentPage({ apartments }) {
   const { id } = useParams();
+
   const apartment = apartments.find((apt) => apt.id === id);
 
   if (!apartment) {
@@ -14,6 +14,9 @@ function ApartmentPage() {
   }
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  if (!apartments || apartments.length === 0) {
+    return <div>Chargement...</div>; // pendant que le fetch se fait
+  }
 
   const handleNext = () => {
     setCurrentImageIndex((prevIndex) =>

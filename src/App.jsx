@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import "./App.scss";
 import Banner from "./components/Banner.jsx";
@@ -11,6 +11,15 @@ import NotFound from "./components/NotFound.jsx";
 import ApartmentPage from "./components/apartments/ApartmentPage.jsx";
 
 function App() {
+  const [apartments, setApartments] = useState([]);
+
+  useEffect(() => {
+    fetch("/data.json")
+      .then((response) => response.json())
+      .then((data) => setApartments(data))
+      .catch((error) => console.error("Erreur de chargement :", error));
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -20,12 +29,15 @@ function App() {
           element={
             <Main>
               <Banner />
-              <ApartmentGrid />
+              <ApartmentGrid apartments={apartments} />
             </Main>
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/apartment/:id" element={<ApartmentPage />} />
+        <Route
+          path="/apartment/:id"
+          element={<ApartmentPage apartments={apartments} />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
